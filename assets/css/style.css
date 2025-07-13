@@ -1,0 +1,242 @@
+:root {
+    --primary-bg: #1a1a2e;
+    --secondary-bg: #16213e;
+    --tertiary-bg: #0f3460;
+    --accent-color: #e94560;
+    --text-color: #dcdcdc;
+    --element-bg: #2c3e50;
+    --element-border: #34495e;
+    --feedback-correct: #2ecc71;
+    --feedback-incorrect: #e74c3c;
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#game-container {
+    width: 100%;
+    max-width: 1400px;
+    background-color: var(--secondary-bg);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    border: 1px solid var(--tertiary-bg);
+}
+
+header {
+    text-align: center;
+    border-bottom: 2px solid var(--tertiary-bg);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-family: var(--font-display);
+    color: var(--accent-color);
+    font-size: 2.5em;
+    margin: 0;
+    text-shadow: 0 0 10px var(--accent-color);
+}
+
+#game-info {
+    display: flex;
+    justify-content: space-around;
+    font-family: var(--font-display);
+    font-size: 1.2em;
+    margin-top: 15px;
+}
+
+#formula-display-container {
+    background-color: var(--primary-bg);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#current-formula {
+    min-height: 60px;
+    background: #111;
+    border: 2px dashed var(--tertiary-bg);
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 2em;
+    font-family: var(--font-display);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+#current-formula .formula-part {
+    margin: 0 2px;
+}
+
+#current-formula .formula-part .symbol {
+    color: var(--accent-color);
+}
+
+#current-formula .formula-part .count {
+    font-size: 0.7em;
+    vertical-align: sub;
+    color: var(--text-color);
+}
+
+
+#feedback {
+    margin-top: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    min-height: 24px;
+}
+
+.feedback-correct {
+    color: var(--feedback-correct);
+}
+
+.feedback-incorrect {
+    color: var(--feedback-incorrect);
+}
+
+#controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+button {
+    font-family: var(--font-display);
+    padding: 12px 25px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+#submit-btn { background-color: #27ae60; }
+#submit-btn:hover { background-color: #2ecc71; box-shadow: 0 0 15px #2ecc71; }
+
+#clear-btn { background-color: #f39c12; }
+#clear-btn:hover { background-color: #f1c40f; box-shadow: 0 0 15px #f1c40f; }
+
+#new-game-btn { background-color: var(--accent-color); }
+#new-game-btn:hover { background-color: #ff6b81; box-shadow: 0 0 15px #ff6b81;}
+
+
+#periodic-table-container {
+    overflow-x: auto;
+}
+
+#periodic-table {
+    display: grid;
+    grid-template-columns: repeat(18, minmax(60px, 1fr));
+    grid-template-rows: repeat(7, minmax(60px, 1fr));
+    gap: 5px;
+}
+
+.element {
+    background-color: var(--element-bg);
+    border: 1px solid var(--element-border);
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.element:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--accent-color);
+    border-color: var(--accent-color);
+    z-index: 10;
+}
+
+.element .number {
+    font-size: 0.7em;
+    align-self: flex-start;
+}
+
+.element .symbol {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.element .name {
+    font-size: 0.6em;
+    word-break: break-all;
+}
+
+footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--secondary-bg);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    border: 1px solid var(--accent-color);
+}
+.modal-content h2 {
+    font-family: var(--font-display);
+    color: var(--accent-color);
+    margin-top: 0;
+}
+.modal-content button {
+    background-color: var(--accent-color);
+    margin-top: 20px;
+}
+.modal-content button:hover {
+    background-color: #ff6b81;
+}
+
+/* Element Category Colors */
+.alkali.metal { background-color: #c0392b; }
+.alkaline.earth.metal { background-color: #e67e22; }
+.lanthanide { background-color: #d35400; }
+.actinide { background-color: #e74c3c; }
+.transition.metal { background-color: #f1c40f; color: #333; }
+.post-transition.metal { background-color: #2ecc71; }
+.metalloid { background-color: #1abc9c; }
+.polyatomic.nonmetal { background-color: #3498db; }
+.diatomic.nonmetal { background-color: #2980b9; }
+.noble.gas { background-color: #9b59b6; }
+.unknown { background-color: #7f8c8d; }
